@@ -7,8 +7,6 @@
 
 import scrapy
 
-
-class HltvItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class SampleItem(scrapy.Item):
+    images = scrapy.Field()
+    image_urls = scrapy.Field()

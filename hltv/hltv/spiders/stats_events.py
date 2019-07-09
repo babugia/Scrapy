@@ -1,13 +1,13 @@
 from colorama import Fore, Back, Style
 import scrapy
 
-
 class StatsEvents(scrapy.Spider):
     name = "events"
 
     start_urls = [
         'https://www.hltv.org/stats/events?matchType=BigEvents',
     ]
+
 
     def parse(self, response):
         for camp in response.css('td.name-col a::attr(href)'):
@@ -38,6 +38,7 @@ class StatsEvents(scrapy.Spider):
             'date': get_dates('td.eventdate'),
             'prizepool':extract_with_css('td.prizepool.text-ellipsis::text'),
             'teams':extract_with_css('td.teamsNumber::text'),
+            'title':extract_with_css('div.eventname::text'),
         }
 
     # // TODO Save event name and banner
